@@ -3,8 +3,7 @@ defmodule CryptoTest do
   doctest Crypto
 
   test "put hash generates a hash for the block" do
-    block = Block.initial
-    crypto = Crypto.put_hash(block)
-    assert crypto.hash != nil 
+    block = Crypto.put_hash(Block.initial)
+    assert block.hash != nil 
   end
 end

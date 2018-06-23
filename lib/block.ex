@@ -16,4 +16,12 @@ defmodule Block do
       timestamp: DateTime.utc_now()
     }
   end
+
+  def valid?(%Block{} = block)  do
+    Crypto.hash(block) == block.hash
+  end
+
+  def valid?(%Block{} = block, %Block{} = previous_block) do
+    (block.previous_hash == previous_block.hash) && valid?(block)
+  end
 end
