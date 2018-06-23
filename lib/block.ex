@@ -9,7 +9,7 @@ defmodule Block do
     }
   end
 
-  def initial do
+  def genesis do
     %Block{
       data: "ZERO_DATA",
       previous_hash: "ZERO_HASH",

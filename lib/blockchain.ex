@@ -1,6 +1,6 @@
 defmodule Blockchain do
   def new do
-    [ Crypto.put_hash(Block.initial) ]
+    [ Crypto.put_hash(Block.genesis) ]
   end
 
   def insert(blockchain, data) when is_list(blockchain) do
