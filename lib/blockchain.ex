@@ -1,18 +1,16 @@
 defmodule Blockchain do
-  @moduledoc """
-  Documentation for Blockchain.
-  """
+  def new do
+    [ Crypto.put_hash(Block.initial) ]
+  end
 
-  @doc """
-  Hello world.
+  def insert(blockchain, data) when is_list(blockchain) do
+    %Block{hash: previous} = hd(blockchain)
 
-  ## Examples
+    block = 
+      data
+      |> Block.new(previous)
+      |> Crypto.put_hash
 
-      iex> Blockchain.hello
-      :world
-
-  """
-  def hello do
-    :world
+    [ block | blockchain ]
   end
 end
