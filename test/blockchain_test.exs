@@ -13,4 +13,12 @@ defmodule BlockchainTest do
 
     assert Enum.count(blockchain) == 2
   end
+
+  test "checks new block's previous hash" do
+    blockchain = Blockchain.new
+    blockchain = blockchain |> Blockchain.insert("1 coin") |> Blockchain.insert("2 coin") 
+
+    assert Enum.at(blockchain, 0).previous_hash == Enum.at(blockchain,1).hash
+  end
+
 end
