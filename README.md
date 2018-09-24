@@ -1,21 +1,21 @@
 # Blockchain
 
-Simple Blockchain written in Elixir
+Simple Blockchain written in Elixir. The chain is placed on a GenServer.
 
 ## Run
 `iex -S mix`
 
 ``` elixir
 # Create a new Blockchain
-iex> chain = Blockchain.new
+iex> {:ok, pid} = Blockchain.Server.start_link 
 ```
 ``` elixir
-# Insert new data as a block
-iex> chain = Blockchain.insert(chain, "MESSAGE")
+# Insert  a new block with data
+iex> Blockchain.Server.add(pid, "MESSAGE")
 ```
 ``` elixir
 # Check the Blockchain
-iex> chain
+iex> Blockchain.Server.view(pid) 
 ```
 
 ## Run Tests
